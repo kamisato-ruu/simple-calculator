@@ -1,0 +1,114 @@
+:root {
+  --casing: #d0c2f7;
+  --numberButton: #5f6270;
+  --operationButton: #9685d1;
+  --display: #c4d8cd;
+  --numberDisplay: #3a4340;
+  --numberButton: #f2f3f5;
+  --border:#31333c;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-family: "Press Start 2P";
+  display: flex;
+  padding: 1.5rem 3rem;
+  min-height: 100vh;
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+  flex-direction: column;
+}
+
+.judul h2 {
+  padding: 2rem 0;
+  justify-content: center;
+  display: flex;
+  font-size: 1.4rem;
+}
+
+/* SCREEN START */
+.screen {
+  background-color: var(--casing);
+  display: block;
+  border: 5px groove var(--border);
+  border-radius: 15px;
+  margin: 2rem;
+  box-shadow: 5px 5px 10px var(--operationButton);
+  
+}
+/* DISPLAY SCREEN START */
+.head-screen {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 1rem;
+}
+
+
+#display-screen{
+    display: flex;
+    background-color: var(--display);
+    border-radius: 10px;
+    border: 5px ridge var(--border);
+    width: 90%;
+    height: 5rem;
+    text-align: right;
+    font-family: "Jersey 10";
+    padding: 10px;
+    font-size: 4rem;
+    color: var(--numberDisplay);
+}
+/* DISPLAY SCREEN END */
+
+/* MAIN SCREEN START */
+.main-screen {
+  padding: 2rem 1.3rem;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#zero {
+  grid-column: span 2;
+}
+
+#angle-left-solid {
+  height: 2.3rem;
+  width: auto;
+  fill: currentColor;
+  color: #fff;
+}
+
+.main-screen button {
+  font-family: "Jersey 10";
+  display: grid;
+  height: 3rem;
+  align-items: center;
+  font-size: 2.4rem;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 3px 3px 1px #544159;
+}
+
+.main-screen .number {
+  background-color: var(--numberDisplay);
+  color: var(--numberButton);
+
+}
+
+.main-screen .operator {
+  background-color: var(--operationButton);
+  color: var(--numberButton);
+}
+/* MAIN SCREEN END */
+
+
+/* SCREEN END */

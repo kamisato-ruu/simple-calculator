@@ -1,12 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Calculator</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Jersey+10&family=Jersey+25&family=Press+Start+2P&display=swap"      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- judul section start-->
+    <section class="judul">
+      <h2>SIMPLE CALCULATOR</h2>
+    </section>
+    <!-- judul section end-->
+
+    <!-- screen start-->
+    <section class="screen">
+      <header class="head-screen">
+        <input
+          type="text"
+          readonly
+          id="display-screen"
+          value=""
+          placeholder="0"
+        />
+      </header>
+
+      <!-- main screen start-->
+
+      <section class="main-screen">
+        <button class="operator" id="clear-button">C</button>
+        <button class="operator" data-operators="/">÷</button>
+        <button class="operator" id="percent">%</button>
+        <button class="operator" id="delete-button">
+          <?xml version="1.0" encoding="UTF-8"?><svg
+            id="angle-left-solid"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <polygon
+              points="17 5 17 7 16 7 16 8 15 8 15 9 14 9 14 10 13 10 13 11 12 11 12 13 13 13 13 14 14 14 14 15 15 15 15 16 16 16 16 17 17 17 17 19 16 19 16 20 14 20 14 19 13 19 13 18 12 18 12 17 11 17 11 16 10 16 10 15 9 15 9 14 8 14 8 13 7 13 7 11 8 11 8 10 9 10 9 9 10 9 10 8 11 8 11 7 12 7 12 6 13 6 13 5 14 5 14 4 16 4 16 5 17 5"
+            />
+          </svg>
+        </button>
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="operator" data-operators="*">x</button>
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator" data-operators="-">-</button>
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator" data-operators="+">+</button>
+        <button class="number" id="zero">0</button>
+        <button class="number">.</button>
+        <button class="operator" id="equal">=</button>
+      </section>
+      <!-- main screen end-->
+    </section>
+    <!-- screen end-->
+
     <script src="script/script.js"></script>
-</body>
+  </body>
 </html>
