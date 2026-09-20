@@ -16,33 +16,21 @@ const operatorSymbols = ["+", "-", "x", "÷"]; //main operator
 numbers.forEach(function (number) {
   number.addEventListener("click", function () {
     const numberValue = number.textContent;
-
+    const lastNumber = display.value.split(/([\+\-x÷])/).pop();
+    const formatted = parseFloat(lastNumber).toLocaleString("id-ID");
     audioNumberButton.currentTime = 0;
     audioNumberButton.play();
-
-    // mencegah koma/titik double
+    
+    //mencegah titik double pada
     if (numberValue === ",") {
-      const currentLastNumber = display.value.split(/([\+\-x÷])/).pop();
-      if (currentLastNumber.includes(",")) return;
-      if (display.value === "") {
+      if (lastNumber.includes(",")) return;
+      //mencegah titik pada angka awal
+      if (display.value == "") {
         display.value += "0,";
         return;
       }
     }
-
-    // tambahin angka baru ke display DULU
     display.value += numberValue;
-
-    // baru ambil angka terakhir (yang sudah termasuk numberValue baru)
-    const lastNumber = display.value.split(/([\+\-x÷])/).pop();
-
-    // format pakai toLocaleString
-    const formatted = parseFloat(
-      lastNumber.replaceAll(".", "").replace(",", ".")
-    ).toLocaleString("id-ID");
-
-    // ganti angka terakhir di display dengan versi yang sudah di-format
-    display.value = display.value.slice(0, -lastNumber.length) + formatted;
   });
 });
 
