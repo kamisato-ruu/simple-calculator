@@ -16,21 +16,33 @@ const operatorSymbols = ["+", "-", "x", "÷"]; //main operator
 numbers.forEach(function (number) {
   number.addEventListener("click", function () {
     const numberValue = number.textContent;
+
     audioNumberButton.currentTime = 0;
     audioNumberButton.play();
 
-    //mencegah titik double pada
-    if (numberValue === ".") {
-      const lastNumber = display.value.split(/([\+\-x÷])/).pop();
-      if (lastNumber.includes(".")) return;
-      //mencegah titik pada angka awal
-      if (display.value == "") {
-        display.value += "0.";
+    // mencegah koma/titik double
+    if (numberValue === ",") {
+      const currentLastNumber = display.value.split(/([\+\-x÷])/).pop();
+      if (currentLastNumber.includes(",")) return;
+      if (display.value === "") {
+        display.value += "0,";
         return;
       }
     }
 
+    // tambahin angka baru ke display DULU
     display.value += numberValue;
+
+    // baru ambil angka terakhir (yang sudah termasuk numberValue baru)
+    const lastNumber = display.value.split(/([\+\-x÷])/).pop();
+
+    // format pakai toLocaleString
+    const formatted = parseFloat(
+      lastNumber.replaceAll(".", "").replace(",", ".")
+    ).toLocaleString("id-ID");
+
+    // ganti angka terakhir di display dengan versi yang sudah di-format
+    display.value = display.value.slice(0, -lastNumber.length) + formatted;
   });
 });
 
@@ -78,7 +90,10 @@ equal.addEventListener("click", function () {
   audioNumberButton.currentTime = 0;
   audioNumberButton.play();
   try {
-    let replace = display.value.replaceAll("x", "*").replaceAll("÷", "/");
+    let replace = display.value
+      .replaceAll("x", "*")
+      .replaceAll("÷", "/")
+      .replaceAll(",", ".");
     let result = Function("'Use strict' ; return (" + replace + ")")();
 
     if (result == Infinity || result == -Infinity) {
@@ -93,14 +108,14 @@ equal.addEventListener("click", function () {
 
 //clear button
 clear.addEventListener("click", function () {
-  audioClearButton.currentTime = 0.35;
+  audioClearButton.currentTime = 1.35;
   audioClearButton.play();
   display.value = "";
 });
 
 //delete button
 deletee.addEventListener("click", function () {
-  audioDeleteButton.currentTime = 0;
+  audioDeleteButton.currentTime = 1.89;
   audioDeleteButton.play();
   display.value = display.value.slice(0, -1);
 });
