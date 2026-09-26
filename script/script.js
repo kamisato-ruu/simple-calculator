@@ -17,7 +17,6 @@ numbers.forEach(function (number) {
   number.addEventListener("click", function () {
     const numberValue = number.textContent;
     const lastNumber = display.value.split(/([\+\-x÷])/).pop();
-    const formatted = parseFloat(lastNumber).toLocaleString("id-ID");
     audioNumberButton.currentTime = 0;
     audioNumberButton.play();
     
@@ -38,12 +37,19 @@ numbers.forEach(function (number) {
 operations.forEach(function (operation) {
   operation.addEventListener("click", function () {
     const operationValue = operation.textContent;
+    const exceptMinus = ["+" , "÷", "x"];
     const lastChar = display.value.slice(-1);
     audioNumberButton.currentTime = 0;
     audioNumberButton.play();
 
     //mengatasi memasukkan operator awal kecuali minus
-    if (display.value === "" && operationValue !== "-") return;
+    if (display.value === "") {
+      if (exceptMinus.includes(operationValue)) {
+        display.value = "0" + operationValue;
+        return;
+      }
+
+    }
 
     //mengatasi operasi double atau menumpuk
     if (operatorSymbols.includes(lastChar)) {
@@ -96,14 +102,14 @@ equal.addEventListener("click", function () {
 
 //clear button
 clear.addEventListener("click", function () {
-  audioClearButton.currentTime = 1.35;
+  audioClearButton.currentTime = 0.3;
   audioClearButton.play();
   display.value = "";
 });
 
 //delete button
 deletee.addEventListener("click", function () {
-  audioDeleteButton.currentTime = 1.89;
+  audioDeleteButton.currentTime = 0;
   audioDeleteButton.play();
   display.value = display.value.slice(0, -1);
 });
